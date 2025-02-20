@@ -16,11 +16,11 @@ type FoodItem = {
 const FoodCards = ({item}:{item:FoodItem}) => {
   const {addToCart } = useCartStore()
   return (
-    <div className="h-44">
+    <div className="h-32">
        <div className="border p-4 rounded-lg shadow-md items-center flex flex-col h-full">
           <h2 className="text-lg font-semibold">{item.name}</h2>
           <p className="text-gray-500">Price: KES {item.price}</p>
-          <Button className='bg-green-500 mt-5' onClick={()=>addToCart(item)}>Add to cart</Button>
+          <Button className='bg-green-500 my-4' onClick={()=>addToCart(item)}>Add to cart</Button>
         </div>
     </div>
   )

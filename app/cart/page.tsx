@@ -2,16 +2,56 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 import { useCartStore } from "@/lib/store/cartStore";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 const CartPage = () => {
+  const [ phone, setPhone ] = useState('')
+  const [ address,setAddress ] = useState('')
+  const { toast } = useToast()
+
+   const handleOrder = async () => {
+
+    if (!phone || !address) {
+      toast({description:"Please enter your phone number and address!"});
+      return;
+    }
+
+    const orderData = {
+      orderId: Date.now().toString(),
+      items: cart,
+      total: getTotalPrice() + 200,
+      phone, 
+      address
+    };
+  
+    const response = await fetch("/api/notify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(orderData),
+    });
+  
+    const result = await response.json();
+    if (result.success) {
+      toast({
+        description: "Order Sent Successfully. Kindly prepare payment as it is being delivered.",
+      })
+      clearCart(); // Clear cart after ordering
+    } else {
+      console.log("Failed to send order: " + result.error);
+      toast({
+        description: "Failed to send Order.",
+      })
+    }
+  };
   const { cart, removeFromCart, updateQuantity, clearCart } = useCartStore();
 
   const getTotalPrice = () =>
     cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
+ 
   return (
     <div className="py-5 h-screen w-full px-2">
       {cart.length === 0 ? (
@@ -75,14 +115,20 @@ const CartPage = () => {
             <div className="flex flex-col gap-5">
                     <div>
                     <Label>Delivery Address</Label>
-                    <Input placeholder="Where should we deliver the food?" className=""/>
+                    <Input
+                      value={address}
+                      onChange={(e)=>setAddress(e.target.value)}
+                    placeholder="Where should we deliver the food?" className=""/>
                     </div>
                     <div>
                     <Label>Phone Number</Label>
-                    <Input placeholder="0712345678" className=""/>
+                    <Input 
+                    value={phone}
+                    onChange={(e)=>setPhone(e.target.value)}
+                    placeholder="0712345678" className=""/>
                     </div>
                     <div className="w-full flex justify-center">
-                        <Button className="bg-green-500 w-1/2">Order Now</Button>
+                        <Button className="bg-green-500 w-1/2" onClick={handleOrder}>Order Now</Button>
                     </div>
             </div>
           </div>

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/home/Navbar";
 import BottomBar from "@/components/home/BottomBar";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,7 @@ export default function RootLayout({
         <div>
           <Navbar/>
         </div>
+        <Toaster/>
         {children}
         <div className="fixed bottom-0 w-full mt-20">
         <BottomBar />

@@ -12,7 +12,7 @@ const Hero = () => {
        <Image src='/images/delivery.png' alt="delivery" width={500} height={500}/>
        </div>
       <div>
-        <div className="grid grid-cols-2 gap-4 p-4 mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-4 mb-20">
         {FoodItems.map((item) => (
           <FoodCards key={item.id} item={item} />
         ))}
