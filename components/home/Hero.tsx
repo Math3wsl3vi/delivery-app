@@ -1,6 +1,7 @@
 import React from "react";
 import FoodCards from "./FoodCards";
 import Image from "next/image";
+import { FoodItems } from "@/lib/data";
 
 const Hero = () => {
   return (
@@ -11,7 +12,11 @@ const Hero = () => {
        <Image src='/images/delivery.png' alt="delivery" width={500} height={500}/>
        </div>
       <div>
-        <FoodCards/>
+        <div className="grid grid-cols-3 gap-4 p-4 mb-20">
+        {FoodItems.map((item) => (
+          <FoodCards key={item.id} item={item} />
+        ))}
+      </div>
       </div>
     </div>
   );

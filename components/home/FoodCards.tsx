@@ -1,17 +1,27 @@
+"use client"
 import React from 'react'
-import { FoodItems } from './../../lib/data'
 import { Button } from '../ui/button'
+import { useCartStore } from '@/lib/store/cartStore';
 
-const FoodCards = () => {
+type FoodItem = {
+  id: string;
+  name: string;
+  price: number;
+  currency: string;
+  description: string;
+  image?: string;
+  quantity: number;
+};
+
+const FoodCards = ({item}:{item:FoodItem}) => {
+  const {addToCart } = useCartStore()
   return (
-    <div className="grid grid-cols-3 gap-4 p-4 mb-20">
-      {FoodItems.map(({ name, price }, index) => (
-        <div key={index} className="border p-4 rounded-lg shadow-md items-center flex flex-col">
-          <h2 className="text-lg font-semibold">{name}</h2>
-          <p className="text-gray-500">Price: KES {price}</p>
-          <Button className='bg-green-500 mt-5'>Add to cart</Button>
+    <div className="h-44">
+       <div className="border p-4 rounded-lg shadow-md items-center flex flex-col h-full">
+          <h2 className="text-lg font-semibold">{item.name}</h2>
+          <p className="text-gray-500">Price: KES {item.price}</p>
+          <Button className='bg-green-500 mt-5' onClick={()=>addToCart(item)}>Add to cart</Button>
         </div>
-      ))}
     </div>
   )
 }
