@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Delivery App
 
-## Getting Started
+A simple and efficient food delivery platform built with **Next.js, TypeScript, Firebase, Zustand, and Twilio**. This project was developed as a **1-day coding challenge** to test rapid development skills while ensuring functionality and a great user experience.
 
-First, run the development server:
+---
 
+## 📌 Features
+
+✅ **User Authentication** (Firebase Auth)  
+✅ **Browse Food Items** from various restaurants  
+✅ **Add to Cart** and manage orders  
+✅ **Update Quantity** or Remove Items  
+✅ **Order Summary with Total Price Calculation**  
+✅ **WhatsApp Order Notifications** via Twilio  
+✅ **Responsive Design** for mobile and desktop  
+
+---
+
+## 🛠️ Tech Stack
+
+- **Next.js** (App Router)
+- **TypeScript**
+- **Firebase** (Auth & Firestore)
+- **Zustand** (State Management)
+- **Twilio API** (WhatsApp Order Notifications)
+- **Tailwind CSS** (Styling)
+
+---
+
+## 🔧 Installation & Setup
+
+1️⃣ Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/delivery-app.git
+cd delivery-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2️⃣ Install dependencies:
+```bash
+yarn install  # or npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3️⃣ Set up environment variables in a `.env.local` file:
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+TWILIO_ACCOUNT_SID=your_twilio_sid
+TWILIO_AUTH_TOKEN=your_twilio_auth_token
+TWILIO_WHATSAPP_NUMBER=whatsapp:+14155238886
+MY_WHATSAPP_NUMBER=whatsapp:+2547XXXXXXXX
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4️⃣ Run the development server:
+```bash
+yarn dev  # or npm run dev
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📱 How It Works
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **User adds food items to the cart**
+2. **User enters their phone number & address**
+3. **Order is sent via WhatsApp using Twilio API**
+4. **Restaurant receives the order and processes it**
+5. **Delivery is made! 🚴‍♂️💨**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📌 Future Improvements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- ✅ Add Payment Gateway (M-Pesa, Stripe)
+- ✅ Implement Order Tracking System
+- ✅ Enhance UI/UX with better animations
+- ✅ Improve backend scalability
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🏆 Challenge Outcome
+
+This app was built as a **1-day challenge** to test efficiency, creativity, and technical skills. The goal was to implement a **functional MVP (Minimum Viable Product)** within **24 hours** while maintaining clean, structured code.
+
+🚀 **Mission Accomplished!** 💪🔥
+
+---
+
+## 📝 License
+
+This project is open-source and available under the **MIT License**.
+
+---
+
+### 💡 Need Help?
+Feel free to open an issue or reach out! 😊
+
+Happy Hacking!
